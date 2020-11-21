@@ -1,5 +1,5 @@
 # SA-MPFS
-Some gathered SA-MP Fliterscript from public with a lil rework
+with a lil rework you can do anythin! 0w0
 
 Feel free to use/rework/remake all of this script BUT DONT TOUCH THE CREDIT PLEASE!
 
