@@ -7,4 +7,4 @@ Kinda lonely here. Hope you can accompany me >.>
 I make some, but most of them i reworked it. Need any help? find me at dc weziza#0006
 
 
-https://discord.gg/clubgamink
+Note all of these work, currently rework the code. Feel free to leave any message on my discord!
