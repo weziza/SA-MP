@@ -1,0 +1,417 @@
+// This is a comment
+// uncomment the line below if you want to write a filterscript
+//#define FILTERSCRIPT
+
+#include <a_samp>
+#include <ZCMD>
+
+#define BODY_PART_TORSO 3
+#define BODY_PART_GROIN 4
+#define BODY_PART_LEFT_ARM 5
+#define BODY_PART_RIGHT_ARM 6
+#define BODY_PART_LEFT_LEG 7
+#define BODY_PART_RIGHT_LEG 8
+#define BODY_PART_HEAD 9
+
+
+new PlayerText:Textdraw0[MAX_PLAYERS];
+new PlayerText:Textdraw1[MAX_PLAYERS];
+new PlayerText:Textdraw2[MAX_PLAYERS];
+new PlayerText:Textdraw3[MAX_PLAYERS];
+new PlayerText:Textdraw4[MAX_PLAYERS];
+new PlayerText:Textdraw5[MAX_PLAYERS];
+new PlayerText:Textdraw6[MAX_PLAYERS];
+new PlayerText:Textdraw7[MAX_PLAYERS];
+new PlayerText:Textdraw8[MAX_PLAYERS];
+new PlayerText:Textdraw9[MAX_PLAYERS];
+new PlayerText:Textdraw10[MAX_PLAYERS];
+new PlayerText:Textdraw11[MAX_PLAYERS];
+new PlayerText:Textdraw12[MAX_PLAYERS];
+
+///////////// Commands to test the wounds textdraws and effects ///////////////////////////
+CMD:torso(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw0[playerid]);
+	 PlayerTextDrawShow(playerid, Textdraw8[playerid]);
+     SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:groin(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw1[playerid]);
+     SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:leftarm(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw2[playerid]);
+	 PlayerTextDrawShow(playerid, Textdraw9[playerid]);
+	 SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:rightarm(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw3[playerid]);
+     PlayerTextDrawShow(playerid, Textdraw10[playerid]);
+     SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:leftleg(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw4[playerid]);
+     PlayerTextDrawShow(playerid, Textdraw11[playerid]);
+     SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:rightleg(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw5[playerid]);
+	 PlayerTextDrawShow(playerid, Textdraw12[playerid]);
+	 SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+CMD:head(playerid, params[])
+{
+     new Float:health;
+     GetPlayerHealth(playerid,health);
+     PlayerTextDrawShow(playerid, Textdraw6[playerid]);
+	 PlayerTextDrawShow(playerid, Textdraw7[playerid]);
+	 SetPlayerHealth(playerid, health+ -7);
+	 return 1;
+}
+
+CMD:healme(playerid, params[]) // Example command to heal, you got to make your own heal command, it's easy.
+{
+SendClientMessage(playerid, -1, "All the wounds were treated");
+PlayerTextDrawHide(playerid, Textdraw0[playerid]);
+PlayerTextDrawHide(playerid, Textdraw1[playerid]);
+PlayerTextDrawHide(playerid, Textdraw2[playerid]);
+PlayerTextDrawHide(playerid, Textdraw3[playerid]);
+PlayerTextDrawHide(playerid, Textdraw4[playerid]);
+PlayerTextDrawHide(playerid, Textdraw5[playerid]);
+PlayerTextDrawHide(playerid, Textdraw6[playerid]);
+PlayerTextDrawHide(playerid, Textdraw7[playerid]);
+PlayerTextDrawHide(playerid, Textdraw8[playerid]);
+PlayerTextDrawHide(playerid, Textdraw9[playerid]);
+PlayerTextDrawHide(playerid, Textdraw10[playerid]);
+PlayerTextDrawHide(playerid, Textdraw11[playerid]);
+PlayerTextDrawHide(playerid, Textdraw12[playerid]);
+return 1;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+
+public OnPlayerTakeDamage(playerid, issuerid, Float: amount, weaponid, bodypart)
+{
+new Float:health;
+GetPlayerHealth(playerid,health);
+switch(bodypart)
+    {
+    case 3:
+	{
+	 
+	 PlayerTextDrawShow(playerid, Textdraw0[playerid]);
+	 PlayerTextDrawShow(playerid, Textdraw8[playerid]);
+	 SetPlayerHealth(playerid, health+ -7);
+	 
+	 
+    }
+    case 4:
+	{
+	
+	PlayerTextDrawShow(playerid, Textdraw1[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	
+	
+	}
+    case 5:
+	{
+
+	PlayerTextDrawShow(playerid, Textdraw2[playerid]);
+	PlayerTextDrawShow(playerid, Textdraw9[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	
+	
+	}
+    case 6:
+	{
+	
+	PlayerTextDrawShow(playerid, Textdraw3[playerid]);
+	PlayerTextDrawShow(playerid, Textdraw10[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	
+
+	}
+    case 7:
+	{
+	
+	PlayerTextDrawShow(playerid, Textdraw4[playerid]);
+	PlayerTextDrawShow(playerid, Textdraw11[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	
+	
+	}
+    case 8:
+	{
+	
+	PlayerTextDrawShow(playerid, Textdraw5[playerid]);
+	PlayerTextDrawShow(playerid, Textdraw12[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	
+	
+	}
+    case 9:
+	{
+	
+	PlayerTextDrawShow(playerid, Textdraw6[playerid]);
+	PlayerTextDrawShow(playerid, Textdraw7[playerid]);
+	SetPlayerHealth(playerid, health+ -7);
+	}
+}
+return 1;
+}
+
+public OnPlayerConnect(playerid)
+{
+Textdraw0[playerid] = CreatePlayerTextDraw(playerid,500.000000, 163.000000, "Brutally Wounded in Torso");
+PlayerTextDrawBackgroundColor(playerid,Textdraw0[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw0[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw0[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw0[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw0[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw0[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw0[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw0[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw0[playerid], 0);
+
+Textdraw1[playerid] = CreatePlayerTextDraw(playerid,500.000000, 183.000000, "Brutally Wounded in Groin");
+PlayerTextDrawBackgroundColor(playerid,Textdraw1[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw1[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw1[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw1[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw1[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw1[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw1[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw1[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw1[playerid], 0);
+
+Textdraw2[playerid] = CreatePlayerTextDraw(playerid,500.000000, 203.000000, "Brutally Wounded in Left Arm");
+PlayerTextDrawBackgroundColor(playerid,Textdraw2[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw2[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw2[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw2[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw2[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw2[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw2[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw2[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw2[playerid], 0);
+
+Textdraw3[playerid] = CreatePlayerTextDraw(playerid,500.000000, 223.000000, "Brutally Wounded in Right Arm");
+PlayerTextDrawBackgroundColor(playerid,Textdraw3[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw3[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw3[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw3[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw3[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw3[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw3[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw3[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw3[playerid], 0);
+
+Textdraw4[playerid] = CreatePlayerTextDraw(playerid,500.000000, 243.000000, "Brutally Wounded in Left Leg");
+PlayerTextDrawBackgroundColor(playerid,Textdraw4[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw4[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw4[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw4[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw4[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw4[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw4[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw4[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw4[playerid], 0);
+
+Textdraw5[playerid] = CreatePlayerTextDraw(playerid,500.000000, 263.000000, "Brutally Wounded in Right Leg");
+PlayerTextDrawBackgroundColor(playerid,Textdraw5[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw5[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw5[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw5[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw5[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw5[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw5[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw5[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw5[playerid], 0);
+
+Textdraw6[playerid] = CreatePlayerTextDraw(playerid,500.000000, 283.000000, "Brutally Wounded in Head");
+PlayerTextDrawBackgroundColor(playerid,Textdraw6[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw6[playerid], 1);
+PlayerTextDrawLetterSize(playerid,Textdraw6[playerid], 0.200000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw6[playerid], -16776961);
+PlayerTextDrawSetOutline(playerid,Textdraw6[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw6[playerid], 1);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw6[playerid], 1231);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw6[playerid], -16.000000, 0.000000, -55.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw6[playerid], 0);
+
+Textdraw7[playerid] = CreatePlayerTextDraw(playerid,460.000000, 275.000000, "Head Skull");
+PlayerTextDrawBackgroundColor(playerid,Textdraw7[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw7[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw7[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw7[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw7[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw7[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw7[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw7[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw7[playerid], 40.000000, 30.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw7[playerid], 1254);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw7[playerid], 0.000000, 0.000000, 10.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw7[playerid], 0);
+
+Textdraw8[playerid] = CreatePlayerTextDraw(playerid,460.000000, 153.000000, "Torso Icon");
+PlayerTextDrawBackgroundColor(playerid,Textdraw8[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw8[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw8[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw8[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw8[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw8[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw8[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw8[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw8[playerid], 40.000000, 30.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw8[playerid], 1275);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw8[playerid], 0.000000, 0.000000, 10.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw8[playerid], 0);
+
+Textdraw9[playerid] = CreatePlayerTextDraw(playerid,460.000000, 195.000000, "Left Arm");
+PlayerTextDrawBackgroundColor(playerid,Textdraw9[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw9[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw9[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw9[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw9[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw9[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw9[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw9[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw9[playerid], 40.000000, 30.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw9[playerid], 3009);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw9[playerid], 0.000000, 0.000000, 0.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw9[playerid], 0);
+
+Textdraw10[playerid] = CreatePlayerTextDraw(playerid,460.000000, 213.000000, "Right Arm");
+PlayerTextDrawBackgroundColor(playerid,Textdraw10[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw10[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw10[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw10[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw10[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw10[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw10[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw10[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw10[playerid], 40.000000, 30.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw10[playerid], 3008);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw10[playerid], 0.000000, 0.000000, 0.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw10[playerid], 0);
+
+Textdraw11[playerid] = CreatePlayerTextDraw(playerid,460.000000, 239.000000, "Left Leg");
+PlayerTextDrawBackgroundColor(playerid,Textdraw11[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw11[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw11[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw11[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw11[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw11[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw11[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw11[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw11[playerid], 40.000000, 20.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw11[playerid], 3011);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw11[playerid], 0.000000, 0.000000, 0.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw11[playerid], 0);
+
+Textdraw12[playerid] = CreatePlayerTextDraw(playerid,460.000000, 256.000000, "Right Leg");
+PlayerTextDrawBackgroundColor(playerid,Textdraw12[playerid], 0);
+PlayerTextDrawFont(playerid,Textdraw12[playerid], 5);
+PlayerTextDrawLetterSize(playerid,Textdraw12[playerid], 0.500000, 1.000000);
+PlayerTextDrawColor(playerid,Textdraw12[playerid], -1);
+PlayerTextDrawSetOutline(playerid,Textdraw12[playerid], 1);
+PlayerTextDrawSetProportional(playerid,Textdraw12[playerid], 1);
+PlayerTextDrawUseBox(playerid,Textdraw12[playerid], 1);
+PlayerTextDrawBoxColor(playerid,Textdraw12[playerid], 255);
+PlayerTextDrawTextSize(playerid,Textdraw12[playerid], 40.000000, 20.000000);
+PlayerTextDrawSetPreviewModel(playerid, Textdraw12[playerid], 3010);
+PlayerTextDrawSetPreviewRot(playerid, Textdraw12[playerid], 0.000000, 0.000000, 0.000000, 1.000000);
+PlayerTextDrawSetSelectable(playerid,Textdraw12[playerid], 0);
+return 1;
+}
+
+public OnPlayerDisconnect(playerid, reason)
+{
+PlayerTextDrawDestroy(playerid, Textdraw0[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw1[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw2[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw3[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw4[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw5[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw6[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw7[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw8[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw9[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw10[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw11[playerid]);
+PlayerTextDrawDestroy(playerid, Textdraw12[playerid]);
+return 1;
+}
+
+public OnFilterScriptInit()
+{
+	print("\n--------------------------------------");
+	print(" Blank Filterscript by your name here");
+	print("--------------------------------------\n");
+	return 1;
+}
+
+public OnFilterScriptExit()
+{
+	return 1;
+}
+
+public OnPlayerDeath(playerid, killerid, reason)
+{
+    PlayerTextDrawHide(playerid, Textdraw0[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw1[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw2[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw3[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw4[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw5[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw6[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw7[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw8[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw9[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw10[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw11[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw12[playerid]);
+    return 1;
+}
+
+
+public OnPlayerSpawn(playerid)
+{
+    PlayerTextDrawHide(playerid, Textdraw0[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw1[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw2[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw3[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw4[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw5[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw6[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw7[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw8[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw9[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw10[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw11[playerid]);
+    PlayerTextDrawHide(playerid, Textdraw12[playerid]);
+    return 1;
+}
